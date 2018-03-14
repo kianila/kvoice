@@ -12,11 +12,15 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
-    var speech = req.body.result && req.body.result.parameters && req.body.result.parameters.echoText ? req.body.result.parameters.echoText : "Seems like some problem. Speak again."
+    var speech = req.body.result &&
+                          req.body.result.parameters &&
+                          req.body.result.parameters.metal ?
+                          req.body.result.parameters.echoText : "Seems like some problem. Please specify the metal you are asking about."
+
     return res.json({
         speech: speech,
         displayText: speech,
-        source: 'webhook-echo-sample'
+        source: 'KVoice'
     });
 });
 
