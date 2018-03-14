@@ -12,10 +12,12 @@ restService.use(bodyParser.urlencoded({
 restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
-    var speech = req.body.result &&
+var speech = req.body.result &&
                           req.body.result.parameters &&
                           req.body.result.parameters.metal ?
-                          req.body.result.parameters.echoText : "Seems like some problem. Please specify the metal you are asking about."
+                          req.body.result.parameters.metal : "Seems like some problem. Please specify the metal you are asking about."
+
+//    var speech ="This is a test";
 
     return res.json({
         speech: speech,
