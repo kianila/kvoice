@@ -1,27 +1,24 @@
 {
   "name": "kvoice",
   "version": "1.0.0",
-  "description": "KVoice",
+  "description": "KVoice Gold Price",
   "main": "index.js",
-  "dependencies": {
-    "express": "^4.16.3"
-  },
-  "devDependencies": {},
   "scripts": {
+    "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/kianila/kvoice.git"
   },
-  "keywords": [
-    "Gold",
-    "Price"
-  ],
-  "author": "kianila",
+  "author": "Kianila",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kianila/kvoice/issues"
   },
-  "homepage": "https://github.com/kianila/kvoice#readme"
+  "homepage": "https://github.com/kianila/kvoice#readme",
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.16.3"
+  }
 }
