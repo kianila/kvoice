@@ -1,0 +1,22 @@
+{
+  "name": "kvoice",
+  "version": "1.0.0",
+  "description": "KVoice Gold Price",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kianila/kvoice.git"
+  },
+  "author": "Kianila",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kianila/kvoice/issues"
+  },
+  "homepage": "https://github.com/kianila/kvoice#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
+}
