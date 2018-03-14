@@ -13,7 +13,7 @@ restService.use(bodyParser.json());
 
 restService.post('/echo', function(req, res) {
 
-var metal =req.body.result && req.body.result.parameters && req.body.result.parameters.metal ?metal: "NoMetal";
+var metal =req.body.result && req.body.result.parameters && req.body.result.parameters.metal ?req.body.result.parameters.metal: "NoMetal";
 var weight =req.body.result && req.body.result.parameters && req.body.result.parameters.weight ? req.body.result.parameters.weight: "1";
 var weightUnit =req.body.result && req.body.result.parameters && req.body.result.parameters.weightUnit ?req.body.result.parameters.weightUnit: "ounce";
 var currency =req.body.result && req.body.result.parameters && req.body.result.parameters.currency ?req.body.result.parameters.currency: "USD";
