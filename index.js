@@ -18,7 +18,7 @@ var weight =req.body.result && req.body.result.parameters && req.body.result.par
 var weightUnit =req.body.result && req.body.result.parameters && req.body.result.parameters.weightUnit ?req.body.result.parameters.weightUnit: "ounce";
 var currency =req.body.result && req.body.result.parameters && req.body.result.parameters.currency ?req.body.result.parameters.currency: "USD";
 
-var speech = metal=="NoMetal" ?"You asked about " + weight + " " + weightUnit+ " of " +metal +" in " + currency :  "Seems like some problem. Please specify the metal you are asking about."
+var speech = metal!="NoMetal" ?"You asked about " + weight + " " + weightUnit+ " of " +metal +" in " + currency :  "Seems like some problem. Please specify the metal you are asking about."
 
     return res.json({
         speech: speech,
