@@ -21,8 +21,8 @@ var currency =req.body.result && req.body.result.parameters && req.body.result.p
 
 
 
-//const url="https://kds2.kitco.com/getPm?symbol=AU,AG,PT,PD,RD&apikey=9bnteWVi2kT13528d100c608fn0TlbC6&market=1&type=json";
-const url="https://kds2.kitco.com/getPm?symbol=AU,AG,PT,PD,RD&apikey=9bnteWVi2kT13528d100c608fn0TlbC6&market=1";
+const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG,PT,PD,RD&apikey=9bnteWVi2kT13528d100c608fn0TlbC6&market=1&type=json";
+
     metal=metal.toUpperCase();
     console.log(metal);
 
@@ -44,8 +44,8 @@ const url="https://kds2.kitco.com/getPm?symbol=AU,AG,PT,PD,RD&apikey=9bnteWVi2kT
         body += data;
       });
       resKDS.on("end", () => {
-        //body = JSON.parse(body);
-      body={"PreciousMetals":{"PM":[{"ChangePercentage":-0.14,"High":1327.3,"Low":1319,"Symbol":"AU","Currency":"USD","Ask":1323.8,"Mid":1323.3,"Change":-1.8,"Unit":"OUNCE","Bid":1322.8,"Timestamp":"2018-03-14 17:00:00"},{"ChangePercentage":0,"High":16.52,"Low":16.42,"Symbol":"AG","Currency":"USD","Ask":16.52,"Mid":16.47,"Change":0,"Unit":"OUNCE","Bid":16.42,"Timestamp":"2018-03-14 17:00:00"}]}};
+        body = JSON.parse(body);
+      //body={"PreciousMetals":{"PM":[{"ChangePercentage":-0.14,"High":1327.3,"Low":1319,"Symbol":"AU","Currency":"USD","Ask":1323.8,"Mid":1323.3,"Change":-1.8,"Unit":"OUNCE","Bid":1322.8,"Timestamp":"2018-03-14 17:00:00"},{"ChangePercentage":0,"High":16.52,"Low":16.42,"Symbol":"AG","Currency":"USD","Ask":16.52,"Mid":16.47,"Change":0,"Unit":"OUNCE","Bid":16.42,"Timestamp":"2018-03-14 17:00:00"}]}};
 
 
         var arrFound = body.PreciousMetals.PM.filter(function(item) {
