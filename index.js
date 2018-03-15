@@ -21,7 +21,7 @@ var currency =req.body.result && req.body.result.parameters && req.body.result.p
 
 
 
-const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d100c608fn0TlbC6&market=1&type=json";
+const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG,PT,PD,RD&apikey=9bnteWVi2kT13528d100c608fn0TlbC6&market=1&type=json";
 
     metal=metal.toUpperCase();
     console.log(metal);
