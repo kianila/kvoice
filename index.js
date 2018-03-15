@@ -56,7 +56,7 @@ const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG,PT,PD,RD&apikey=9bnteWVi
           if (arrFound[0] ){
           var ts=arrFound[0].Timestamp;
           console.log(ts);
-          var ts=ts.substr(1, 18);
+          var ts=ts.substr(0, 18);
           console.log(ts);
           speech = arrFound[0] ?"Acording to Kitco, as of " +ts +", " +weight + " " + weightUnit+ " of " +metal +" is " + currency + ""+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
 
