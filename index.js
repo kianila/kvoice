@@ -24,6 +24,8 @@ var currency =req.body.result && req.body.result.parameters && req.body.result.p
 const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d100c608fn0TlbC6&market=1&type=json";
 
     metal=metal.toUpperCase();
+    console.log(metal);
+
     var symbol="";
     var speech="";
 
@@ -32,6 +34,8 @@ const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d
     else if (metal=="PLATINUM") symbol="PT"
     else if (metal=="PALLADIUM") symbol="PD"
     else if (metal=="RHODIUM") symbol="RD";
+
+    console.log(symbol);
 
     https.get(url, res => {
       res.setEncoding("utf8");
@@ -43,15 +47,16 @@ const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d
         body = JSON.parse(body);
 
         var arrFound = body.PreciousMetals.PM.filter(function(item) {
-              return item.Symbol == "AU";
+              return item.Symbol == symbol;
           });
 
-          speech = arrFound ?"The price of  " + weight + " " + weightUnit+ " of " +metal +" in " + currency + " is "+ arrFound.Bid:  "Seems like some problem. Please specify the metal you are asking about."
+          //speech = arrFound ?"As of  " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" in " + currency + " is "+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
 
+          speech = arrFound ?"As of  " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" is " + currency + ""+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
 
-        /*
           console.log(arrFound);
-        console.log(
+          console.log(speech);
+        /*console.log(
           `Symbol: ${body.PreciousMetals.PM[0].Symbol} -`,
           `Timestamp: ${body.PreciousMetals.PM[0].Timestamp} -`,
           `Bid: ${body.PreciousMetals.PM[0].Bid} -`,
