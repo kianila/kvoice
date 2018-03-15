@@ -2,6 +2,7 @@
 
 const express = require('express');
 const bodyParser = require('body-parser');
+const https = require("https");
 
 const restService = express();
 
@@ -18,7 +19,46 @@ var weight =req.body.result && req.body.result.parameters && req.body.result.par
 var weightUnit =req.body.result && req.body.result.parameters && req.body.result.parameters.weightUnit ?req.body.result.parameters.weightUnit: "ounce";
 var currency =req.body.result && req.body.result.parameters && req.body.result.parameters.currency ?req.body.result.parameters.currency: "USD";
 
-var speech = metal!="NoMetal" ?"You asked about " + weight + " " + weightUnit+ " of " +metal +" in " + currency :  "Seems like some problem. Please specify the metal you are asking about."
+
+
+const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d100c608fn0TlbC6&market=1&type=json";
+
+    metal=metal.toUpperCase();
+    var symbol="";
+    var speech="";
+
+    if (metal=="GOLD")  symbol="AU"
+    else if (metal=="SILVER") symbol="AG"
+    else if (metal=="PLATINUM") symbol="PT"
+    else if (metal=="PALLADIUM") symbol="PD"
+    else if (metal=="RHODIUM") symbol="RD";
+
+    https.get(url, res => {
+      res.setEncoding("utf8");
+      let body = "";
+      res.on("data", data => {
+        body += data;
+      });
+      res.on("end", () => {
+        body = JSON.parse(body);
+
+        var arrFound = body.PreciousMetals.PM.filter(function(item) {
+              return item.Symbol == "AU";
+          });
+
+          speech = arrFound ?"The price of  " + weight + " " + weightUnit+ " of " +metal +" in " + currency + " is "+ arrFound.Bid:  "Seems like some problem. Please specify the metal you are asking about."
+
+
+        /*
+          console.log(arrFound);
+        console.log(
+          `Symbol: ${body.PreciousMetals.PM[0].Symbol} -`,
+          `Timestamp: ${body.PreciousMetals.PM[0].Timestamp} -`,
+          `Bid: ${body.PreciousMetals.PM[0].Bid} -`,
+          `Change: ${body.PreciousMetals.PM[0].Change} }`
+        ); */
+      });
+    });
 
     return res.json({
         speech: speech,
