@@ -52,7 +52,7 @@ const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d
 
           //speech = arrFound ?"As of  " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" in " + currency + " is "+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
 
-          speech = arrFound ?"As of " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" is " + currency + ""+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
+          speech = arrFound[0] ?"As of " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" is " + currency + ""+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
 
           console.log(arrFound);
           console.log(speech);
