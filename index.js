@@ -37,13 +37,13 @@ const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d
 
     console.log(symbol);
 
-    https.get(url, res => {
-      res.setEncoding("utf8");
+    https.get(url, resKDS => {
+      resKDS.setEncoding("utf8");
       let body = "";
-      res.on("data", data => {
+      resKDS.on("data", data => {
         body += data;
       });
-      res.on("end", () => {
+      resKDS.on("end", () => {
         body = JSON.parse(body);
 
         var arrFound = body.PreciousMetals.PM.filter(function(item) {
@@ -52,10 +52,15 @@ const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d
 
           //speech = arrFound ?"As of  " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" in " + currency + " is "+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
 
-          speech = arrFound ?"As of  " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" is " + currency + ""+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
+          speech = arrFound ?"As of " +arrFound[0].Timestamp +", " +weight + " " + weightUnit+ " of " +metal +" is " + currency + ""+ arrFound[0].Bid:  "Seems like some problem. Please specify the metal you are asking about."
 
           console.log(arrFound);
           console.log(speech);
+          return res.json({
+              speech: speech,
+              displayText: speech,
+              source: 'kvoice'
+          });
         /*console.log(
           `Symbol: ${body.PreciousMetals.PM[0].Symbol} -`,
           `Timestamp: ${body.PreciousMetals.PM[0].Timestamp} -`,
@@ -65,11 +70,6 @@ const url="https://kds2-qa.kitco.com/getPm?symbol=AU,AG&apikey=9bnteWVi2kT13528d
       });
     });
 
-    return res.json({
-        speech: speech,
-        displayText: speech,
-        source: 'kvoice'
-    });
 });
 
 restService.post('/slack-test', function(req, res) {
