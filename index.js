@@ -58,7 +58,7 @@ restService.post('/echo', function(req, res) {
         console.log(ts);
         var ts = ts.substr(0, 18);
         console.log(ts);
-        speech = arrFound[0] ? "Acording to Kitco, as of " + ts + ", " + weight + " " + weightUnit + " of " + metal + " is " + currency + "" + arrFound[0].Bid : "Seems like some problem. Please specify the metal you are asking about."
+        speech = arrFound[0] ? "As of " + ts + ", " + weight + " " + weightUnit + " of " + metal + " is " + currency + "" + arrFound[0].Bid : "Seems like some problem. Please specify the metal you are asking about."
 
         console.log(arrFound);
       } else {
