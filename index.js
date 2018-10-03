@@ -58,7 +58,10 @@ restService.post('/echo', function(req, res) {
         console.log(ts);
         var ts = ts.substr(0, 18);
         console.log(ts);
-        speech = arrFound[0] ? "According to Kitco, As of " + ts + ", " + weight + " " + weightUnit + " of " + metal + " is " + currency + "" + arrFound[0].Bid : "Seems like some problem. Please specify the metal you are asking about."
+        //speech = arrFound[0] ? "According to Kitco, As of " + ts + ", " + weight + " " + weightUnit + " of " + metal + " is " + currency + "" + arrFound[0].Bid : "Seems like some problem. Please specify the metal you are asking about."
+        speech = arrFound[0] ? "The current spot " + metal + " price updated at "+ ts + " is " + currency + "" + arrFound[0].Bid + " per ounce": "Seems like some problem. Please specify the metal you are asking about."
+        //The current spot <Gold> price updated [time gap] is 1344.50 US$ per ounce [up,down] % on the day
+
 
         console.log(arrFound);
       } else {
