@@ -79,36 +79,125 @@ restService.post('/echo', function(req, res) {
      inquiryType="Base Metal";
   }
   
-  if (metal == "DOW JONES") symbol = "DJI"    // start of indices
-  else if (metal == "IXIC") symbol = "IXIC"
-  else if (metal == "S&P 500") symbol = "SPX"
-  else if (metal == "USD Index") symbol = "USDX"
-  else if (metal == "NYA") symbol = "NYA"
-  else if (metal == "GSPTSE") symbol = "GSPTSE"
-  else if (metal == "N225") symbol = "N225"
-  else if (metal == "XAU") symbol = "XAU"
-  else if (metal == "HUI") symbol = "HUI"
-  else if (metal == "GOX") symbol = "GOX"
-  else if (metal == "JGLDX") symbol = "JGLDX"
-  else if (metal == "SPTTGD") symbol = "SPTTGD"
-  else if (metal == "GFMS") symbol = "GFMS"
-  else if (metal == "CRUDE OIL") symbol = "CL"
+  // start of indices
+  if (metal == "DOW JONES") {
+    symbol = "DJI";  
+     inquiryType="Indices";
+  }
+  else if (metal == "IXIC") {
+    symbol = "IXIC";  
+     inquiryType="Indices";
+  }
+  else if (metal == "S&P 500") {
+    symbol = "SPX";  
+     inquiryType="Indices";
+  }
+  else if (metal == "USD Index") {
+    symbol = "USDX";  
+     inquiryType="Indices";
+  }
+  else if (metal == "NYA") {
+    symbol = "NYA";  
+     inquiryType="Indices";
+  }
+  else if (metal == "GSPTSE") {
+    symbol = "GSPTSE";  
+     inquiryType="Indices";
+  }
+  else if (metal == "N225") {
+    symbol = "N225";  
+     inquiryType="Indices";
+  }
+  else if (metal == "XAU") {
+    symbol = "XAU";  
+     inquiryType="Indices";
+  }
+  else if (metal == "HUI") {
+    symbol = "HUI";  
+     inquiryType="Indices";
+  }
+  else if (metal == "GOX") {
+    symbol = "GOX";  
+     inquiryType="Indices";
+  }
+  else if (metal == "JGLDX") {
+    symbol = "JGLDX";  
+     inquiryType="Indices";
+  }
+  else if (metal == "SPTTGD") {
+    symbol = "SPTTGD";  
+     inquiryType="Indices";
+  }
+  else if (metal == "GFMS") {
+    symbol = "GFMS";  
+     inquiryType="Indices";
+  }
+  else if (metal == "CRUDE OIL") {
+    symbol = "CL";  
+     inquiryType="Indices";
+  }
   
-  if (metal == "CANADIAN DOLLAR") symbol = "CAD"    //start of the exchange rate
-  else if (metal == "INDIAN RUPEE") symbol = "INR"
-  else if (metal == "AUSTRALIAN DOLLAR") symbol = "AUD"
-  else if (metal == "EURO") symbol = "EUR"
-  else if (metal == "BRITISH POUND") symbol = "GBP"
-  else if (metal == "HONG KONG DOLLAR") symbol = "HKD"
-  else if (metal == "JAPANESE YEN") symbol = "JPY"
-  else if (metal == "EURO") symbol = "EUR"
-  else if (metal == "SWISS FRANK") symbol = "CHF"
-  else if (metal == "SOUTH AFRICAN RAND") symbol = "ZAR"
-  else if (metal == "CHINESE YUAN") symbol = "CNY"
-  else if (metal == "BRAZILIAN REAL") symbol = "BRL"
-  else if (metal == "MEXICAN PESO") symbol = "MXN"
-  else if (metal == "RUSSIAN RUBLE") symbol = "RUB"
-  else if (metal == "BITCOIN") symbol = "BTC"
+  //start of the exchange rate
+  if (metal == "CANADIAN DOLLAR") {
+    symbol = "CAD";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "INDIAN RUPEE") {
+    symbol = "INR";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "AUSTRALIAN DOLLAR"){
+    symbol = "AUD";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "EURO") {
+    symbol = "EUR";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "BRITISH POUND") {
+    symbol = "GBP";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "HONG KONG DOLLAR"){
+    symbol = "HKD";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "JAPANESE YEN") {
+    symbol = "JPY";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "EURO") {
+    symbol = "EUR";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "SWISS FRANK") {
+    symbol = "CHF";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "SOUTH AFRICAN RAND") {
+    symbol = "ZAR";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "CHINESE YUAN") {
+    symbol = "CNY";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "BRAZILIAN REAL") {
+    symbol = "BRL";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "MEXICAN PESO") {
+    symbol = "MXN";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "RUSSIAN RUBLE") {
+    symbol = "RUB";  
+     inquiryType="Exchange Rate";
+  }
+  else if (metal == "BITCOIN") {
+    symbol = "BTC";  
+     inquiryType="Exchange Rate";
+  }
   
   // base metals  
   // indices DJI,IXIC,SPX,USDX,NYA,GSPTSE,N225,XAU,HUI,GOX,JGLDX,SPTTGD,GFMS,CL
