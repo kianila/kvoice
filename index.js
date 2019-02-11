@@ -25,16 +25,97 @@ restService.post('/echo', function(req, res) {
 
   metal = metal.toUpperCase();
   console.log(metal);
-
+  
+  var inquiryType="";
+  //var inquiry=metal;  // to be changed; i've used metal in the begining, I should change 
+                        // the name to cover other questions as well; for example basemetals, indexes, stocks, etc
+                        // so  from this point on; metal means what client is asking about
   var symbol = "";
   var speech = "";
+  
+  if (metal == "GOLD") {
+    symbol = "AU";
+    inquiryType="Precious Metal";
+  }
+  else if (metal == "SILVER") {
+    symbol = "AG";
+     inquiryType="Precious Metal";
+  }
+  else if (metal == "PLATINUM") {
+    symbol = "PT";
+     inquiryType="Precious Metal";
+  }
+  else if (metal == "PALLADIUM") {
+    symbol = "PD";
+     inquiryType="Precious Metal";
+  }
+  else if (metal == "RHODIUM") {
+    symbol = "RD";
+     inquiryType="Precious Metal";
+  }
+  //start of Base metals
+  if (metal == "COPPER") {
+    symbol = "CU";  
+     inquiryType="Base Metal";
+  }
+  else if (metal == "NICKEL") {
+    symbol = "NI";  
+     inquiryType="Base Metal";
+  }
+  else if (metal == "ALUMINUM") {
+    symbol = "AL";  
+     inquiryType="Base Metal";
+  }
+  else if (metal == "ZINC") {
+    symbol = "ZN";  
+     inquiryType="Base Metal";
+  }
+  else if (metal == "LEAD") {
+    symbol = "PB";  
+     inquiryType="Base Metal";
+  }
+  else if (metal == "URANIUM"){
+    symbol = "UR";  
+     inquiryType="Base Metal";
+  }
+  
+  if (metal == "DOW JONES") symbol = "DJI"    // start of indices
+  else if (metal == "IXIC") symbol = "IXIC"
+  else if (metal == "S&P 500") symbol = "SPX"
+  else if (metal == "USD Index") symbol = "USDX"
+  else if (metal == "NYA") symbol = "NYA"
+  else if (metal == "GSPTSE") symbol = "GSPTSE"
+  else if (metal == "N225") symbol = "N225"
+  else if (metal == "XAU") symbol = "XAU"
+  else if (metal == "HUI") symbol = "HUI"
+  else if (metal == "GOX") symbol = "GOX"
+  else if (metal == "JGLDX") symbol = "JGLDX"
+  else if (metal == "SPTTGD") symbol = "SPTTGD"
+  else if (metal == "GFMS") symbol = "GFMS"
+  else if (metal == "CRUDE OIL") symbol = "CL"
+  
+  if (metal == "CANADIAN DOLLAR") symbol = "CAD"    //start of the exchange rate
+  else if (metal == "INDIAN RUPEE") symbol = "INR"
+  else if (metal == "AUSTRALIAN DOLLAR") symbol = "AUD"
+  else if (metal == "EURO") symbol = "EUR"
+  else if (metal == "BRITISH POUND") symbol = "GBP"
+  else if (metal == "HONG KONG DOLLAR") symbol = "HKD"
+  else if (metal == "JAPANESE YEN") symbol = "JPY"
+  else if (metal == "EURO") symbol = "EUR"
+  else if (metal == "SWISS FRANK") symbol = "CHF"
+  else if (metal == "SOUTH AFRICAN RAND") symbol = "ZAR"
+  else if (metal == "CHINESE YUAN") symbol = "CNY"
+  else if (metal == "BRAZILIAN REAL") symbol = "BRL"
+  else if (metal == "MEXICAN PESO") symbol = "MXN"
+  else if (metal == "RUSSIAN RUBLE") symbol = "RUB"
+  else if (metal == "BITCOIN") symbol = "BTC"
+  
+  // base metals  
+  // indices DJI,IXIC,SPX,USDX,NYA,GSPTSE,N225,XAU,HUI,GOX,JGLDX,SPTTGD,GFMS,CL
+  // exchange rate  USD, CAD, INR, AUD, EUR, GBP, HKD, JPY, CHF, ZAR, CNY, BRL, MXN, RUS,BTC
 
-  if (metal == "GOLD") symbol = "AU"
-  else if (metal == "SILVER") symbol = "AG"
-  else if (metal == "PLATINUM") symbol = "PT"
-  else if (metal == "PALLADIUM") symbol = "PD"
-  else if (metal == "RHODIUM") symbol = "RD";
-
+  
+  
   console.log(symbol);
 
   https.get(url, resKDS => {
@@ -61,6 +142,7 @@ restService.post('/echo', function(req, res) {
         //speech = arrFound[0] ? "According to Kitco, As of " + ts + ", " + weight + " " + weightUnit + " of " + metal + " is " + currency + "" + arrFound[0].Bid : "Seems like some problem. Please specify the metal you are asking about."
         speech = arrFound[0] ? "The current spot " + metal + " price updated at "+ ts + " is " + currency + "" + arrFound[0].Bid + " per ounce": "Seems like some problem. Please specify the metal you are asking about."
         //The current spot <Gold> price updated [time gap] is 1344.50 US$ per ounce [up,down] % on the day
+        //The current spot <Gold> price updated at <4:00 pm EST> is <1344.50> <US$> <per ounce>
 
 
         console.log(arrFound);
